@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>房产</title>
+</head>
+<body>
+<h1>房产</h1>
+
+<script src="js/axios-0.18.0.js"></script>
+<script src="js/vue.js"></script>
+<div id="app">
+
+    <!--    <a :href="'http://' + url + '/imag/all/1.jpg'">点击</a>-->
+
+    <div v-for="url in urlData">
+        <img :src="url">
+    </div>
+
+
+
+</div>
+
+<script>
+    new Vue({
+        el:"#app",
+        mounted() {
+            var _this = this;
+
+            axios({
+                method: "get",
+                url: "http://localhost/ip/7"
+                // url: "http://localhost/ip/fixed/7"
+            }).then(function (resp) {
+                _this.urlData = resp.data;
+            })
+        },
+        data() {
+            return {
+                urlData: []
+                // url:"192.168.1.204"
+            }
+
+        }
+    });
+
+
+</script>
+</body>
+</html>

@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>体育</title>
+</head>
+<body>
+<h1>体育</h1>
+<!--<div>-->
+<!--    <img src="imag/all/11.jpg" width="600" height="400">-->
+<!--    <img src="imag/all/12.jpg" width="600" height="400">-->
+<!--    <img src="imag/all/13.jpg" width="600" height="400">-->
+<!--    <img src="imag/all/14.jpg" width="600" height="400">-->
+<!--    <img src="imag/all/15.jpg" width="600" height="400">-->
+<!--    <img src="imag/all/17.jpg" width="600" height="400">-->
+<!--    <img src="imag/all/16.jpg" width="600" height="400">-->
+<!--    <img src="imag/all/18.jpg" width="600" height="400">-->
+<!--    <img src="imag/all/19.jpg" width="600" height="400">-->
+<!--    <img src="imag/all/20.jpg" width="600" height="400">-->
+<!--</div>-->
+<script src="js/axios-0.18.0.js"></script>
+<script src="js/vue.js"></script>
+<div id="app">
+
+    <!--    <a :href="'http://' + url + '/imag/all/1.jpg'">点击</a>-->
+
+    <div v-for="url in urlData">
+        <img :src="url">
+    </div>
+
+
+
+</div>
+
+<script>
+    new Vue({
+        el:"#app",
+        mounted() {
+            var _this = this;
+
+            axios({
+                method: "get",
+                url: "http://localhost/ip/2"
+                // url: "http://localhost/ip/fixed/2"
+            }).then(function (resp) {
+                _this.urlData = resp.data;
+            })
+        },
+        data() {
+            return {
+                urlData: []
+                // url:"192.168.1.204"
+            }
+
+        }
+    });
+
+
+</script>
+</body>
+</html>

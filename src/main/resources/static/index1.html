@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>军事</title>
+</head>
+<body>
+<h1>军事</h1>
+<!--<div>-->
+<!--    <img src="imag/all/1.jpg" width="600" height="400">-->
+<!--    <img src="imag/all/2.jpg" width="600" height="400">-->
+<!--    <img src="imag/all/3.jpg" width="600" height="400">-->
+<!--    <img src="imag/all/4.jpg" width="600" height="400">-->
+<!--    <img src="imag/all/5.jpg" width="600" height="400">-->
+<!--    <img src="imag/all/7.jpg" width="600" height="400">-->
+<!--    <img src="imag/all/6.jpg" width="600" height="400">-->
+<!--    <img src="imag/all/8.jpg" width="600" height="400">-->
+<!--    <img src="imag/all/9.jpg" width="600" height="400">-->
+<!--    <img src="imag/all/10.jpg" width="600" height="400">-->
+<!--</div>-->
+
+<script src="js/axios-0.18.0.js"></script>
+<script src="js/vue.js"></script>
+<script src="js/jquery.min.js"></script>
+<div id="app">
+    <!--    <a :href="'http://' + url + '/imag/all/1.jpg'">点击</a>-->
+    <div v-for="url in urlData">
+        <img :src="url">
+    </div>
+</div>
+
+<script>
+    new Vue({
+        el:"#app",
+        mounted() {
+            var _this = this;
+
+            axios({
+                method: "get",
+                url: "http://localhost/ip/1"
+                // url: "http://localhost/ip/fixed/1"
+            }).then(function (resp) {
+                _this.urlData = resp.data;
+            })
+        },
+        data() {
+            return {
+                urlData: []
+                // url:"192.168.1.204"
+            }
+
+        }
+    });
+
+
+</script>
+
+</body>
+</html>
