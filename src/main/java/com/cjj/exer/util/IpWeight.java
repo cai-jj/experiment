@@ -157,6 +157,7 @@ public class IpWeight {
             String ip = checkIp(ipList, map2);
             System.out.println("识别后的ip为:" + ip);
         }
+        System.out.println("=============");
     }
 
 
