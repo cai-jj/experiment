@@ -15,16 +15,16 @@ public class RandomIp {
         //初始化托管ip
         ipList = new ArrayList<>();
 //        ipList.add("192.168.1.204");
-        ipList.add("192.168.72.128");
-        ipList.add("192.168.72.129");
-        ipList.add("192.168.72.130");
-        ipList.add("192.168.72.131");
-        ipList.add("192.168.72.132");
-        ipList.add("192.168.72.133");
-        ipList.add("192.168.72.134");
-        ipList.add("192.168.72.135");
-        ipList.add("192.168.72.136");
-        ipList.add("192.168.72.137");
+        ipList.add("192.168.67.128");
+        ipList.add("192.168.67.129");
+        ipList.add("192.168.67.130");
+        ipList.add("192.168.67.131");
+        ipList.add("192.168.67.132");
+        ipList.add("192.168.67.133");
+        ipList.add("192.168.67.134");
+        ipList.add("192.168.67.135");
+        ipList.add("192.168.67.136");
+        ipList.add("192.168.67.137");
     }
 
 
