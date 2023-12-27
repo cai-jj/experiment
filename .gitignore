@@ -1,11 +1,7 @@
-.git
-logs
-rebel.xml
 target/
 !.mvn/wrapper/maven-wrapper.jar
-log.path_IS_UNDEFINED
-.DS_Store
-offline_user.md
+!**/src/main/**/target/
+!**/src/test/**/target/
 
 ### STS ###
 .apt_generated
@@ -14,26 +10,30 @@ offline_user.md
 .project
 .settings
 .springBeans
+.sts4-cache
 
 ### IntelliJ IDEA ###
 .idea
 *.iws
 *.iml
 *.ipr
+mvnw
+mvnw.cmd
+.mvn
+
 
 ### NetBeans ###
-nbproject/private/
+/nbproject/private/
+/nbbuild/
+/dist/
+/nbdist/
+/.nb-gradle/
 build/
-nbbuild/
-dist/
-nbdist/
-.nb-gradle/
-generatorConfig.xml
+!**/src/main/**/build/
+!**/src/test/**/build/
 
-### nacos ###
-third-party/nacos/derby.log
-third-party/nacos/data/
-third-party/nacos/work/
-
-file/
-
+### VS Code ###
+.vscode/
+————————————————
+版权声明：本文为CSDN博主「Major_xx」的原创文章，遵循CC 4.0 BY-SA版权协议，转载请附上原文出处链接及本声明。
+原文链接：https://blog.csdn.net/qq_41428418/article/details/132737503
