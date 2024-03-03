@@ -22,7 +22,10 @@ public class Image {
         for (int i = 1; i <= 100; i++) {
             images.add(i + ".jpg");
         }
+    }
 
+    public static List<String> getAllImages() {
+        return images;
     }
 
 

@@ -11,20 +11,23 @@ public class RandomIp {
     //本机托管的ip集合
     private static List<String> ipList;
 
+    private static HashMap<String,List<String>> table = new HashMap<>();
+
     static {
         //初始化托管ip
         ipList = new ArrayList<>();
 //        ipList.add("192.168.1.204");
-        ipList.add("192.168.67.128");
-        ipList.add("192.168.67.129");
-        ipList.add("192.168.67.130");
-        ipList.add("192.168.67.131");
-        ipList.add("192.168.67.132");
-        ipList.add("192.168.67.133");
-        ipList.add("192.168.67.134");
-        ipList.add("192.168.67.135");
-        ipList.add("192.168.67.136");
-        ipList.add("192.168.67.137");
+        ipList.add("192.168.100.10");
+        ipList.add("192.168.100.11");
+        ipList.add("192.168.100.20");
+        ipList.add("192.168.100.21");
+        ipList.add("192.168.100.30");
+        ipList.add("192.168.100.31");
+        ipList.add("192.168.100.40");
+        ipList.add("192.168.100.41");
+        ipList.add("192.168.100.50");
+        ipList.add("192.168.100.51");
+
     }
 
 
