@@ -1,9 +1,13 @@
 package com.cjj.exer.util;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Random;
 
-public class TableUtil {
-
+//每张图片对应一个ip
+//每一类图片都在一个服务器ip上
+public class FixedTableUtil {
     //本机托管的ip集合
     public static List<String> ipList;
 
@@ -11,8 +15,7 @@ public class TableUtil {
 
     //一张图片对应几个ip
     public static HashMap<String, List<String>> table;
-    //一张图片只少映射两个ip(2- 4)
-    private static final int COUNT = 3;
+
 
     //一个ip有多少图片
     public static HashMap<String, List<String>> reverseTable;
@@ -54,63 +57,38 @@ public class TableUtil {
         //初始化映射表
         table = new HashMap<>();
         reverseTable = new HashMap<>();
-        for (int i = 0; i < images.size(); i++) {
-            Random random = new Random();
-            //random.nextInt(COUNT) + 2
-            for (int k = 0; k < random.nextInt(COUNT) + 2; k++) {
-                String image = images.get(i);
-                int index = (image.hashCode() & (ipList.size() - 1)) + k;
-                index = index & (ipList.size() - 1);
 
-                if (map.containsKey(index)) {
-                    map.put(index, map.get(index) + 1);
-                } else {
-                    map.put(index, 1);
-                }
-                String reverseIp = ipList.get(index);
-                if (reverseTable.containsKey(reverseIp)) {
-                    List<String> list = reverseTable.get(reverseIp);
-                    list.add(image);
-                    reverseTable.put(reverseIp, list);
-                } else {
-                    List<String> list = new ArrayList<>();
-                    list.add(image);
-                    reverseTable.put(reverseIp, list);
-                }
-                String ip = ipList.get(index);
-                if (table.containsKey(image)) {
-                    List<String> list = table.get(image);
-                    list.add(ip);
-                    table.put(image, list);
-                } else {
-                    List<String> list = new ArrayList<>();
-                    list.add(ip);
-                    table.put(image, list);
-                }
+        for (int i = 0; i < images.size(); i++) {
+            int count = i / 10;
+            String ip = ipList.get(count);
+            String image = images.get(i);
+            if(table.containsKey(image)) {
+                List<String> list = table.get(image);
+                list.add(ip);
+                table.put(image, list);
+            } else {
+                List<String> list = new ArrayList<>();
+                list.add(ip);
+                table.put(image, list);
+            }
+
+            if (reverseTable.containsKey(ip)) {
+                List<String> list = reverseTable.get(ip);
+                list.add(images.get(i));
+                reverseTable.put(ip, list);
+            } else {
+                List<String> list = new ArrayList<>();
+                list.add(images.get(i));
+                reverseTable.put(ip, list);
+            }
+
+            //服务器图片的数量
+            if (map.containsKey(count)) {
+                map.put(count, map.get(count) + 1);
+            } else {
+                map.put(count, 1);
             }
         }
-
-        //网页与资源初始化 80图片分布8个网页
-//        List<Integer> list = RandomNumber.randomNumber(images.size());
-//        int i = 1, j = 0;
-//        ArrayList<String> tempList = new ArrayList<>();
-//        for(; i < ipList.size(); i++) {
-//            while(true) {
-//                tempList.add(images.get(list.get(j)));
-//                j++;
-//                if(tempList.size() >= 12) {
-//                    break;
-//                }
-//            }
-//            System.out.println("i:" + i);
-//            webMap.put(i, new ArrayList<>(tempList));
-//            tempList.clear();
-//        }
-//        while(j < images.size()) {
-//            tempList.add(images.get(list.get(j)));
-//            j++;
-//        }
-//        webMap.put(i, new ArrayList<>(tempList));
 
     }
 
@@ -152,7 +130,7 @@ public class TableUtil {
     }
 
     public static void main(String[] args) {
-        TableUtil tableUtil = new TableUtil();
+        FixedTableUtil tableUtil = new FixedTableUtil();
         tableUtil.print();
         for (int i = 1; i <= 8; i++) {
             List<String> images = getImages(i);
@@ -163,5 +141,4 @@ public class TableUtil {
 
 
     }
-
 }

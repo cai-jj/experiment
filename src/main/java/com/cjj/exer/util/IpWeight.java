@@ -67,7 +67,11 @@ public class IpWeight {
             }
         }
         //候选集ip集合进行副ip匹配
-        HostedIp ans = null;
+        if(waitList.size() == 0) {
+            System.out.println("没有匹配的ip地址");
+            return null;
+        }
+        HostedIp ans = waitList.get(0);
         double maxWeight = Double.MIN_VALUE;
         for (HostedIp hostedIp : waitList) {
             double weight = 0;
